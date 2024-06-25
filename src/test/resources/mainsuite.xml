@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Main Example Suite">
+    <test name="SearchBar">
+        <classes>
+            <class name="com.apex.liverpool.test.StoryOneTest"/>
+        </classes>
+    </test>
+</suite>
