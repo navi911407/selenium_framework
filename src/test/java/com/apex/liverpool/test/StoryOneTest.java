@@ -4,7 +4,6 @@ import com.apex.liverpool.config.BaseTest;
 import com.apex.liverpool.data.StoryOneData;
 import com.apex.liverpool.helpers.ResultsPageHelper;
 import com.apex.liverpool.pages.SearchBar;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import io.qameta.allure.Description;
 import com.apex.liverpool.helpers.HomePageHelper;

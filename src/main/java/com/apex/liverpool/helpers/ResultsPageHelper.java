@@ -2,7 +2,9 @@ package com.apex.liverpool.helpers;
 
 import com.apex.liverpool.pages.ResultsPage;
 import com.apex.liverpool.pages.SearchBar;
+import com.apex.liverpool.utils.Log;
 import org.testng.asserts.SoftAssert;
+import static com.codeborne.selenide.Condition.text;
 
 import static org.testng.Assert.*;
 
@@ -35,5 +37,19 @@ public class ResultsPageHelper {
         softAssert.assertTrue(resultsPage.getResultedProducts()> 0,
                 "No Result Found");
         softAssert.assertAll();
+    }
+
+    public void selectSpecificResultCard(int position){
+        resultsPage.getSearchResultsCards().get(position).click();
+        Log.info("Result Card: " + position + " Clicked");
+    }
+
+    public void verifyResultCardDescriptionContainsSearchedItem(int position, String item){
+        resultsPage.getResultCardDescription(position).shouldHave(text(item));
+    }
+
+    public void filterByBrand(String brandName){
+        resultsPage.setBrandFilterText(brandName);
+        resultsPage.clickBrandCheckbox(brandName);
     }
 }
