@@ -22,7 +22,7 @@ public class StoryTwoTest extends BaseTest {
 
     @Test(dataProvider = "buyProductData", dataProviderClass = StoryTwoData.class)
     @Description("Search for an item in the search bar and validates the results page")
-    public void SearchBarTest(String item, String brandName, int position, String screenSize) {
+    public void SelectProductsTest(String item, String brandName, int position, String screenSize) {
         SoftAssert softAssert = new SoftAssert();
         homePageHelper.searchElement(item);
         resultsPageHelper.verifyResultsExistence(item, softAssert);
