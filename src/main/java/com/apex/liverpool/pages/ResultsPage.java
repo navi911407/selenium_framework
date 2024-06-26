@@ -3,6 +3,7 @@ package com.apex.liverpool.pages;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import com.apex.liverpool.utils.Log;
+import io.qameta.allure.Step;
 import org.openqa.selenium.Keys;
 
 import static com.codeborne.selenide.Selenide.*;
@@ -41,6 +42,7 @@ public class ResultsPage {
         sleep(500);
     }
 
+    @Step
     public void clickBrandCheckbox(String brandName){
         SelenideElement filterSection = $x(brandFilterSection.replace("WILDCARD","Marcas"));
         filterSection.find(brandFilterBrandCheckbox.replace("BRAND_NAME",brandName)).click();
@@ -48,6 +50,7 @@ public class ResultsPage {
         sleep(500);
     }
 
+    @Step
     public void clickPriceFilterOption(int position){
         SelenideElement filterSection = $x(brandFilterSection.replace("WILDCARD","Precios"));
         filterSection.findAll(filterRadioButtonTemplate).get(position).click();
@@ -55,6 +58,7 @@ public class ResultsPage {
         sleep(500);
     }
 
+    @Step
     public void clickSizeFilterOption(String screenSize){
         SelenideElement filterSection = $x(brandFilterSection.replace(
                 "WILDCARD","Tamaño"));
