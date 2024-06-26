@@ -7,16 +7,10 @@ import com.apex.liverpool.utils.Log;
 import static com.codeborne.selenide.Selenide.$;
 
 public class HomePage {
-    private  final SelenideElement searchBar = $("#mainSearchbar");
+  private final SelenideElement loginButton = $("span[class=a-header__topLink]");
 
-    private void setSearchBarText(String searchValue){
-        searchBar.sendKeys(searchValue);
-        Log.info("Value send to Search Bar :" + searchValue);
+    public void clickLogin(){
+        loginButton.click();
+        Log.info("Login Button Clicked");
     }
-
-    private void searchValue(){
-        searchBar.sendKeys(Keys.ENTER);
-        Log.info("Enter sent to Search Bar");
-    }
-
 }
