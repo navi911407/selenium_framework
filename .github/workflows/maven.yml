@@ -1,6 +1,6 @@
 name: Java CI with Maven and Allure
 
-on: [push, pull_request]
+on: [pull_request]
 
 jobs:
   build:
@@ -15,6 +15,14 @@ jobs:
         with:
           distribution: 'adopt'
           java-version: '21'
+
+      - name: Set up Chrome
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: 'latest'
+
+      - name: Install dependencies
+        run: sudo apt-get install -y libnss3 xvfb
 
       - name: Cache Maven packages
         uses: actions/cache@v2
