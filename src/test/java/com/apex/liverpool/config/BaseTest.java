@@ -20,9 +20,12 @@ public class BaseTest extends AllureTestNg {
     @BeforeMethod
     public void setUp() {
         Log.info("Setting up the test environment");
+        Configuration.browser = "chrome";
         Configuration.baseUrl = ConfigReader.getProperty("base.url");
         Configuration.browserSize = ConfigReader.getProperty("browser.size");
         Configuration.timeout = Integer.parseInt(ConfigReader.getProperty("global.timeout"));
+        Configuration.headless = true;
+        Configuration.screenshots = true;
         open(Configuration.baseUrl);
         Log.info(Configuration.baseUrl);
     }
