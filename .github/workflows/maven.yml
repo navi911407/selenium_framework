@@ -21,9 +21,6 @@ jobs:
         with:
           chrome-version: 'latest'
 
-      - name: Install dependencies
-        run: sudo apt-get install -y libnss3 xvfb
-
       - name: Cache Maven packages
         uses: actions/cache@v4
         with:
@@ -32,10 +29,10 @@ jobs:
           restore-keys: ${{ runner.os }}-maven
 
       - name: Run the Maven verify phase
-        run: mvn --batch-mode --update-snapshots verify
+        run: mvn -B package --file pom.xml
 
-      - name: Build with Maven
-        run: mvn clean install
+      - name: List the current directory
+        run: ls -a
 
       - name: Run tests
         run: mvn test
