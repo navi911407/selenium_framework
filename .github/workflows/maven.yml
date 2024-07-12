@@ -30,7 +30,7 @@ jobs:
           restore-keys: ${{ runner.os }}-maven
 
       - name: Run the Maven verify phase
-        run: mvn -B verify --file pom.xml
+        run: mvn clean test -Dheadless=true -X
 
       - name: List the current directory
         run: ls -a
