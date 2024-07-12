@@ -3,8 +3,11 @@ package com.apex.liverpool.config;
 import com.apex.liverpool.utils.Log;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Screenshots;
+import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.testng.AllureTestNg;
 import io.qameta.allure.Attachment;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -20,9 +23,17 @@ public class BaseTest extends AllureTestNg {
     @BeforeMethod
     public void setUp() {
         Log.info("Setting up the test environment");
+        Configuration.browser = "chrome";
         Configuration.baseUrl = ConfigReader.getProperty("base.url");
         Configuration.browserSize = ConfigReader.getProperty("browser.size");
         Configuration.timeout = Integer.parseInt(ConfigReader.getProperty("global.timeout"));
+        Configuration.headless = true;
+        Configuration.screenshots = true;
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--disable-gpu");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+        WebDriverRunner.setWebDriver(new ChromeDriver(options));
         open(Configuration.baseUrl);
         Log.info(Configuration.baseUrl);
     }
